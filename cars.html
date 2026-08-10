@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسار | قسم إدارة السيارات</title>
+    <meta name="description"
+        content="تابع جميع سيارات الشركة في مكان واحد، واستعرض بيانات كل سيارة وحالتها وتوفرها، مع إمكانية إضافة سيارات جديدة وتعديل بياناتها ومتابعة الصيانة والتراخيص بسهولة.">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Tailwind CSS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="font-family: 'Cairo', sans-serif;" class="bg-gray-100">
+    <div class="grid w-full grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 ">
+        <main class="col-span-1 lg:col-span-3 xl:col-span-4 min-h-screen py-8 sm:py-5 px-3 sm:px-5">
+            <header class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl" id="">قسم <span class="text-cyan-600">إدارة السيارات</span></header>
+            <section class="flex flex-col gap-8 mt-8">
+                
+            </section>
+        </main>
+        <aside
+            class="hidden sticky left-0 top-0 bottom-0 lg:flex flex-col gap-8 lg:col-span-1 bg-white  rounded-r-2xl px-2  overflow-hidden">
+            <div class="border-b-[2px] border-b-gray-200">
+                <img src="images/Logo.webp" class="object-cover " alt="">
+            </div>
+            <ul class="flex flex-col gap-5">
+                <li class="p-3 rounded-xl">
+                    <a href="index.html" class="flex justify-between items-center text-2xl font-semibold text-gray-500">
+                        <span>لوحة التحكم</span>
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="bg-cyan-50/70 p-3 rounded-xl">
+                    <a href="cars.html" class="flex justify-between items-center text-2xl font-semibold text-cyan-700">
+                        <span>إدارة السيارات</span>
+                        <i class="fa-solid fa-truck"></i>
+                    </a>
+                </li>
+                <li class="p-3 rounded-xl">
+                    <a href="#" class="flex justify-between items-center text-2xl font-semibold text-gray-500">
+                        <span>إدارة السائقين</span>
+                        <i class="fa-solid fa-user-tie"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="border-t-[2px] border-t-gray-200 pt-6 absolute bottom-8 right-3 left-3">
+                <a href=""
+                    class=" text-2xl font-semibold p-3 flex bg-red-50/70 rounded-xl text-red-700 justify-between items-center">
+                    <span>الإعدادات</span>
+                    <i class="fa-solid fa-gear text-xl"></i>
+                </a>
+            </div>
+        </aside>
+    </div>
+    <footer class="bg-gray-900 rounded-t-xl px-6 sm:px-10 py-10 mt-5 text-gray-300">
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-8 pb-8 border-b border-gray-700">
+            <div class="flex flex-col gap-3 max-w-sm">
+                <div class="flex items-center gap-2 text-2xl font-bold text-white">
+                    <i class="fa-solid fa-truck text-cyan-400"></i>
+                    <span>مسار</span>
+                </div>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    نظام ذكي لإدارة المركبات والرحلات، يساعدك على متابعة السيارات وتنظيم المهام وإدارة حركة الأسطول
+                    بسهولة
+                    وفعالية.
+                </p>
+            </div>
+    
+            <div class="flex flex-col gap-3">
+                <span class="text-lg font-bold text-white">روابط سريعة</span>
+                <a href="#" class="text-sm text-gray-400 hover:text-cyan-400 transition">لوحة التحكم</a>
+                <a href="cars.html" class="text-sm text-gray-400 hover:text-cyan-400 transition">إدارة السيارات</a>
+                <a href="#" class="text-sm text-gray-400 hover:text-cyan-400 transition">إدارة السائقين</a>
+            </div>
+    
+            <div class="flex flex-col gap-3">
+                <span class="text-lg font-bold text-white">تواصل معنا</span>
+                <div class="flex items-center gap-4 text-xl">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i
+                            class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 text-sm text-gray-500">
+            <p>
+                <i class="fa-solid fa-copyright"></i> 2026 جميع الحقوق محفوظة لـ <span class="text-cyan-400">مسار</span>
+            </p>
+            <a href="https://magdyziad.vercel.app" target="_blank" class="hover:text-cyan-400 transition">
+                تصميم وتطوير: <span class="text-cyan-400 font-semibold">م. مجدي زياد</span>. إضغط للتواصل
+            </a>
+        </div>
+    
+        <div class="h-16 lg:hidden"></div>
+    
+    </footer>
+    <!-- Mobile Nav Bar -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 z-50 mx-3 mb-3 rounded-2xl bg-white/70 backdrop-blur-lg border border-white/40 shadow-lg shadow-black/5">
+        <ul class="flex justify-around items-center py-2">
+            <li>
+                <a href="index.html" class="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl  text-gray-500">
+                    <i class="fa-solid fa-gauge-high text-lg"></i>
+                    <span class="text-xs font-semibold">الرئيسية</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-cyan-600 bg-cyan-50/70">
+                    <i class="fa-solid fa-truck text-lg"></i>
+                    <span class="text-xs font-semibold">السيارات</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-gray-500">
+                    <i class="fa-solid fa-user-tie text-lg"></i>
+                    <span class="text-xs font-semibold">السائقين</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-red-500">
+                    <i class="fa-solid fa-gear text-lg"></i>
+                    <span class="text-xs font-semibold">الإعدادات</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
