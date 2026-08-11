@@ -28,86 +28,195 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
         integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --ink: #0f172a;
+            --paper: #f4f6f9;
+            --cyan: #0891b2;
+            --cyan-deep: #0e7490;
+            --ok: #10b981;
+            --trip: #3b82f6;
+            --fix: #f59e0b;
+            --hold: #f43f5e;
+        }
 
-<body style="font-family: 'Cairo', sans-serif;" class="bg-gray-100">
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .route-dot {
+            position: relative;
+        }
+
+        .route-dot::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -1.15rem;
+            width: .5rem;
+            height: .5rem;
+            border-radius: 9999px;
+            background: var(--cyan);
+            box-shadow: 0 0 0 4px rgba(8, 145, 178, .15);
+            transform: translateY(-50%);
+        }
+
+        .route-track {
+            background-image: linear-gradient(to left, rgba(8, 145, 178, .35) 0 6px, transparent 6px 14px);
+            background-size: 14px 2px;
+            background-repeat: repeat-x;
+            background-position: center;
+            height: 2px;
+        }
+
+        .card-hover {
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -12px rgba(15, 23, 42, .18);
+        }
+
+        ::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        @keyframes drift {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-6px);
+            }
+        }
+
+        .drift {
+            animation: drift 3s ease-in-out infinite;
+        }
+
+        /* Vertical route line for the activity timeline — the dashboard's
+               signature: يمتد المسار رأسيًا بدل الأفقي، ليصل بين أحداث اليوم. */
+        .timeline-line {
+            position: absolute;
+            top: .35rem;
+            bottom: -1.75rem;
+            right: .3rem;
+            width: 2px;
+            background-image: linear-gradient(to bottom, rgba(8, 145, 178, .3) 0 6px, transparent 6px 14px);
+            background-size: 2px 14px;
+            background-repeat: repeat-y;
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .drift {
+                animation: none;
+            }
+        }
+    </style>
+
+<body style="font-family: 'Cairo', sans-serif;" class="bg-[#f4f6f9]">
     <div class="grid w-full grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 ">
-        <main class="col-span-1 lg:col-span-3 xl:col-span-4 min-h-screen py-8 sm:py-5 px-3 sm:px-5">
-            <header class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl" id="header"></header>
-            <section class="flex flex-col gap-8 mt-8">
-                <div
-                    class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl flex justify-between items-center hover:-translate-y-2  hover:shadow-lg hover:shadow-sky-200 duration-200">
-                    <div class="flex flex-col gap-3">
-                        <span class="text-gray-600">إجمالي عدد السيارات</span>
-                        <span class="text-sky-500 text-4xl sm:text-5xl">88</span>
+        <main class="col-span-1 lg:col-span-3 xl:col-span-4 min-h-screen py-6 sm:py-8 px-3 sm:px-6 pb-28 lg:pb-8">
+        
+            <!-- Header -->
+            <header
+                class="bg-white px-5 sm:px-8 py-7 sm:py-8 rounded-2xl shadow-sm shadow-slate-200/60 relative overflow-hidden">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                        <p class="text-cyan-600 text-xs sm:text-sm font-bold tracking-wide">نظرة عامة</p>
+                        <h1 id="header" class="text-2xl sm:text-3xl font-black mt-1"></h1>
                     </div>
-                    <i class="fa-solid fa-truck text-6xl sm:text-8xl text-sky-400"></i>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div
-                        class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl flex justify-between items-center hover:-translate-y-2  hover:shadow-lg hover:shadow-teal-200 duration-200">
-                        <div class="flex flex-col gap-3">
-                            <span class="text-gray-600">في مشوار</span>
-                            <span class="text-teal-500 text-4xl font-black">12</span>
-                        </div>
-                        <i class="fa-solid fa-truck-fast text-teal-400 text-5xl sm:text-6xl"></i>
+                <div class="route-track mt-7 opacity-70"></div>
+            </header>
+        
+            <!-- Stats overview -->
+            <section class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-6">
+                <div class="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200/60 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-truck"></i>
                     </div>
+                    <p class="text-2xl font-black" id="totlaCarsContainer"></p>
+                    <p class="text-slate-400 text-sm font-semibold">إجمالي عدد السيارات</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200/60 card-hover">
                     <div
-                        class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl flex justify-between items-center hover:-translate-y-2  hover:shadow-lg hover:shadow-red-200 duration-200">
-                        <div class="flex flex-col gap-3">
-                            <span class="text-gray-600">أعطال و حوادث</span>
-                            <span class="text-red-500 text-4xl font-black">0</span>
-                        </div>
-                        <i class="fa-solid fa-screwdriver-wrench text-red-500 text-5xl sm:text-6xl"></i>
+                        class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-circle-check"></i>
                     </div>
+                    <p class="text-2xl font-black" id="parkingCarsContainer"></p>
+                    <p class="text-slate-400 text-sm font-semibold">سيارات متاحة</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200/60 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <p class="text-2xl font-black" id="onTripContainer"></p>
+                    <p class="text-slate-400 text-sm font-semibold">في مشوار</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200/60 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <p class="text-2xl font-black" id="damagedCarsContainer"></p>
+                    <p class="text-slate-400 text-sm font-semibold">أعطال و حوادث</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200/60 card-hover">
                     <div
-                        class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl flex justify-between items-center hover:-translate-y-2  hover:shadow-lg hover:shadow-cyan-200 duration-200">
-                        <div class="flex flex-col gap-3">
-                            <span class="text-gray-600">سيارات متاحة</span>
-                            <span class="text-cyan-500 text-4xl font-black">74</span>
-                        </div>
-                        <i class="fa-solid fa-truck-front text-cyan-400 text-5xl sm:text-6xl"></i>
+                        class="w-11 h-11 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-id-card"></i>
                     </div>
-                    <div
-                        class="bg-white text-2xl sm:text-3xl font-bold px-5 py-8 rounded-xl flex justify-between items-center hover:-translate-y-2  hover:shadow-lg hover:shadow-purple-200 duration-200">
-                        <div class="flex flex-col gap-3">
-                            <span class="text-gray-600">منتهية التراخيص</span>
-                            <span class="text-purple-700 text-4xl font-black">2</span>
-                        </div>
-                        <i class="fa-solid fa-id-card text-purple-600 text-5xl sm:text-6xl"></i>
-                    </div>
+                    <p class="text-2xl font-black" id="expiredCarsContainer"></p>
+                    <p class="text-slate-400 text-sm font-semibold">منتهية التراخيص</p>
                 </div>
             </section>
         </main>
         <aside
-            class="hidden sticky left-0 top-0 bottom-0 lg:flex flex-col gap-8 lg:col-span-1 bg-white  rounded-r-2xl px-2  overflow-hidden">
-            <div class="border-b-[2px] border-b-gray-200">
-                <img src="images/Logo.webp" class="object-cover " alt="">
+            class="hidden sticky top-0 h-screen lg:flex flex-col gap-8 lg:col-span-1 bg-white rounded-r-2xl px-3 py-6 overflow-hidden border-r border-slate-100">
+            <div class="pb-6 border-b-[2px] border-b-gray-100 px-2">
+                <img src="images/Logo.webp" class="object-cover" alt="مسار">
             </div>
-            <ul class="flex flex-col gap-5">
-                <li class="bg-cyan-50/70 p-3 rounded-xl">
-                    <a href="#" class="flex justify-between items-center text-2xl font-semibold text-cyan-700">
+            <ul class="flex flex-col gap-2 px-1">
+                <li class="p-3 bg-cyan-50/70 rounded-xl  transition">
+                    <a href="index.html" class="flex justify-between items-center text-lg font-semibold text-cyan-700">
                         <span>لوحة التحكم</span>
                         <i class="fa-solid fa-gauge-high"></i>
                     </a>
                 </li>
-                <li class="p-3 rounded-xl">
-                    <a href="cars.html" class="flex justify-between items-center text-2xl font-semibold text-gray-500">
+                <li class="hover:bg-slate-50 p-3 rounded-xl">
+                    <a href="cars.html" class="flex justify-between items-center text-lg font-semibold text-gray-500">
                         <span>إدارة السيارات</span>
                         <i class="fa-solid fa-truck"></i>
                     </a>
                 </li>
-                <li class="p-3 rounded-xl">
-                    <a href="#" class="flex justify-between items-center text-2xl font-semibold text-gray-500">
+                <li class="p-3 rounded-xl hover:bg-slate-50 transition">
+                    <a href="#" class="flex justify-between items-center text-lg font-semibold text-gray-500">
                         <span>إدارة السائقين</span>
                         <i class="fa-solid fa-user-tie"></i>
                     </a>
                 </li>
             </ul>
-            <div class="border-t-[2px] border-t-gray-200 pt-6 absolute bottom-8 right-3 left-3">
+            <div class="border-t-[2px] border-t-gray-100 pt-6 absolute bottom-6 right-3 left-3">
                 <a href=""
-                    class=" text-2xl font-semibold p-3 flex bg-red-50/70 rounded-xl text-red-700 justify-between items-center">
+                    class="text-lg font-semibold p-3 flex bg-red-50/70 rounded-xl text-red-700 justify-between items-center hover:bg-red-100/70 transition">
                     <span>الإعدادات</span>
-                    <i class="fa-solid fa-gear text-xl"></i>
+                    <i class="fa-solid fa-gear text-lg"></i>
                 </a>
             </div>
         </aside>
