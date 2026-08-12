@@ -240,7 +240,7 @@ function renderDamagedCars() {
                         <i class="fa-solid fa-truck "></i>
                     </div>
                     <div class="min-w-0">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
                             <span dir="ltr" class="font-bold sm:font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
                             <span
                                 class="text-[11px] font-bold self-start sm:self-center bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full">في
