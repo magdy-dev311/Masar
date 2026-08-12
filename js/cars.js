@@ -126,7 +126,7 @@ function renderAvaliableCars() {
                     </div>
                     <div class="min-w-0">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                            <span dir="ltr" class="font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
+                            <span dir="ltr" class="font-bold sm:font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
                             <span
                                 class="text-[11px] self-start sm:self-center font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full">متاحة</span>
                         </div>
@@ -180,7 +180,7 @@ function renderOnTripCars() {
                     </div>
                     <div class="min-w-0">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                            <span dir="ltr" class="font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
+                            <span dir="ltr" class="font-bold sm:font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
                             <span
                                 class="text-[11px] self-start sm:self-center font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full">في
                                 مشوار</span>
@@ -241,7 +241,7 @@ function renderDamagedCars() {
                     </div>
                     <div class="min-w-0">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                            <span dir="ltr" class="font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
+                            <span dir="ltr" class="font-bold sm:font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
                             <span
                                 class="text-[11px] font-bold self-start sm:self-center bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full">في
                                 الصيانة</span>
@@ -296,7 +296,7 @@ function renderExpiredCars() {
                     </div>
                     <div class="min-w-0">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                            <span dir="ltr" class="font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
+                            <span dir="ltr" class="font-bold sm:font-black text-base sm:text-lg tracking-wide">${car.plateNumber}</span>
                             <span
                                 class="text-[11px] self-start sm:self-center font-bold bg-rose-50 text-rose-600 px-2 py-0.5 rounded-full">منتهية
                                 الرخصة</span>
