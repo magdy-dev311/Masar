@@ -118,7 +118,7 @@ function renderAvaliableCars() {
     avaliableCars.forEach(car => {
         structure += `
             <div
-                class="bg-white px-4 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
+                class="bg-white px-3 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
                 <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                     <div
                         class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 text-xl sm:text-2xl shrink-0">
@@ -172,7 +172,7 @@ function renderOnTripCars() {
     onTripCars.forEach(car => {
         structure += `
             <div
-                class="bg-white px-4 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
+                class="bg-white px-3 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
                 <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                     <div
                         class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl sm:text-2xl shrink-0 relative">
@@ -233,7 +233,7 @@ function renderDamagedCars() {
     damagedCars.forEach(car => {
         structure += `
             <div
-                class="bg-white px-4 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
+                class="bg-white px-3 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
                 <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                     <div
                         class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500 text-xl sm:text-2xl shrink-0 relative">
@@ -288,7 +288,7 @@ function renderExpiredCars() {
     expiredCars.forEach(car => {
         structure += `
             <div
-                class="bg-white px-4 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
+                class="bg-white px-3 sm:px-5 py-4 rounded-2xl flex items-center justify-between gap-3 shadow-sm shadow-slate-200/60 card-hover">
                 <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                     <div
                         class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 text-xl sm:text-2xl shrink-0 relative">
