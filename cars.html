@@ -111,25 +111,50 @@
             }
         }
     </style>
+    <!-- Sweet Alert Link -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-[var(--paper)]">
 
-    <div class="grid w-full grid-cols-1 lg:grid-cols-4 xl:grid-cols-5">
+    <!-- Pop Up -->
 
-        <main class="col-span-1 lg:col-span-3 xl:col-span-4 min-h-screen py-6 sm:py-8 px-3 sm:px-6 pb-28 lg:pb-8">
+    <div id="carModal" class="hidden fixed inset-0 z-[60] items-center justify-center px-4">
+        <div id="modalOverlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative bg-white w-full max-w-md rounded-2xl p-6 z-10">
+            <div class="flex items-start justify-between mb-5">
+                <h2 id="modalTitle" class="text-xl font-bold text-gray-800"></h2>
+                <button id="closeModalBtn" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 cursor-pointer hover:bg-gray-200">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
 
-            <!-- Header -->
-            <header
-                class="bg-white px-5 sm:px-8 py-7 sm:py-8 rounded-2xl shadow-sm shadow-slate-200/60 relative overflow-hidden">
+            <!-- Modal Body -->
+            <div id="modalBody" class="flex flex-col gap-5"></div>
+    
+            
+        </div>
+        
+    </div>
+</div>
+
+<div class="grid w-full grid-cols-1 lg:grid-cols-4 xl:grid-cols-5">
+    
+    <main class="col-span-1 lg:col-span-3 xl:col-span-4 min-h-screen py-6 sm:py-8 px-3 sm:px-6 pb-28 lg:pb-8">
+
+        <!-- Header -->
+        <header
+        class="bg-white px-5 sm:px-8 py-7 sm:py-8 rounded-2xl shadow-sm shadow-slate-200/60 relative overflow-hidden">
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h1 class="text-2xl sm:text-3xl font-black mt-1">قسم <span class="text-cyan-600">إدارة
-                                السيارات</span></h1>
-                        <p class="text-slate-400 text-sm mt-2 max-w-md">تابع حالة كل سيارة، وموقعها في المشوار، وموعد
-                            صيانتها القادم — كل ده من مكان واحد.</p>
+                            السيارات</span></h1>
+                            <p class="text-slate-400 text-sm mt-2 max-w-md">تابع حالة كل سيارة، وموقعها في المشوار، وموعد
+                                صيانتها القادم — كل ده من مكان واحد.</p>
+                            
                     </div>
                     <button
+                        id="addNewCar"
                         class="shrink-0 flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 transition text-white font-bold px-5 py-3 rounded-xl shadow-lg shadow-cyan-600/20 cursor-pointer">
                         <i class="fa-solid fa-plus"></i>
                         <span>إضافة سيارة</span>
@@ -277,11 +302,11 @@
                 </li>
             </ul>
             <div class="border-t-[2px] border-t-gray-100 pt-6 absolute bottom-6 right-3 left-3">
-                <a href=""
-                    class="text-lg font-semibold p-3 flex bg-red-50/70 rounded-xl text-red-700 justify-between items-center hover:bg-red-100/70 transition">
+                <button 
+                    class="settingBtn  cursor-pointer w-full text-lg font-semibold p-3 flex bg-red-50/70 rounded-xl text-red-700 justify-between items-center hover:bg-red-100/70 transition">
                     <span>الإعدادات</span>
                     <i class="fa-solid fa-gear text-lg"></i>
-                </a>
+                </button>
             </div>
         </aside>
     </div>
@@ -350,10 +375,10 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-red-500">
+                <button class="settingBtn w-full flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-red-500">
                     <i class="fa-solid fa-gear text-lg"></i>
                     <span class="text-xs font-semibold">الإعدادات</span>
-                </a>
+                </button>
             </li>
         </ul>
     </nav>
